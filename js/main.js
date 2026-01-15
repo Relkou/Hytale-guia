@@ -9,9 +9,9 @@ const guideData = [
         phase: 'Introducción',
         title: 'El Mundo de Hytale',
         desc: 'Estructura y comienzo.',
-        img: 'https://cdn.hytale.com/5e7b9ec650cbcd001176c5bf_10___exploring_sunken_ship.png', // Placeholder or valid URL
+        img: 'https://cdn.hytale.com/5e7b9ec650cbcd001176c5bf_10___exploring_sunken_ship.png',
         content: `
-            <h3>Estructura del Mundo: Orbis</h3>
+            <h3>Estructura del Mundo: Orbis - Guía de Exploración</h3>
             <p>El mundo se llama <strong>Orbis</strong> (parte de un universo mayor). Se divide en zonas:</p>
             <ul>
                 <li><strong>Zona 1:</strong> Llanuras verdes y bosques. Hogar de los Kiwicks.</li>
@@ -27,7 +27,7 @@ const guideData = [
     {
         id: 'quick_guide',
         phase: 'Esencial',
-        title: 'Guía Rápida Completa',
+        title: 'Guía Rápida Completa de Hytale',
         desc: 'Tu hoja de ruta para avanzar.',
         img: 'https://cdn.hytale.com/5e7b9ecb50cbcd001176c5c1_11___z2_camels.png',
         content: `
@@ -49,7 +49,7 @@ const guideData = [
                     <ul class="list-unstyled text-secondary">
                         <li><i class="fas fa-check me-2 text-success"></i>Craftea Pico, Hacha y Espada básicos (inventario).</li>
                         <li><i class="fas fa-check me-2 text-success"></i>Crea la <strong>Mesa de Trabajo (Workbench)</strong> con madera y piedra gris.</li>
-                        <li><i class="fas fa-check me-2 text-success"></i>¡Haz una cama! (Cuero + Fibra) para marcar spawn y pasar la noche.</li>
+                        <li><i class="fas fa-check me-2 text-success"></i><strong>¿Cómo conseguir cama en Hytale?</strong> Craftea una cama usando Madera y Fibra/Pieles. Es vital para marcar tu spawn point.</li>
                     </ul>
                 </div>
 
@@ -66,7 +66,7 @@ const guideData = [
                 <div>
                     <h4 class="text-warning"><i class="fas fa-hammer me-2"></i>4. Era del Cobre</h4>
                     <ul class="list-unstyled text-secondary">
-                        <li><i class="fas fa-angle-right me-2"></i>Busca <strong>Cobre (Naranja)</strong> en minas. Usa antorchas en mano secundaria (Z).</li>
+                        <li><i class="fas fa-angle-right me-2"></i><strong>¿Cómo minar en Hytale?</strong> Busca cuevas o excava hacia abajo. Encuentra Cobre (filón naranja) en capas superficiales. Usa antorchas en mano secundaria (Z).</li>
                         <li><i class="fas fa-angle-right me-2"></i>Construye un <strong>Horno</strong> para lingotes y mejora herramientas.</li>
                         <li><i class="fas fa-angle-right me-2"></i>Craftea la <strong>Mesa de Herrería</strong> para armas de cobre (más daño/durabilidad).</li>
                         <li><i class="fas fa-angle-right me-2"></i>Mesa "Armorer" para armaduras (Set completo = 33 lingotes).</li>
@@ -503,7 +503,15 @@ const addForm = document.getElementById('add-recipe-form');
  */
 document.addEventListener('DOMContentLoaded', () => {
     // Render initial views
-    renderGuideList();
+    // Check for hash on load
+    handleHashNavigation();
+
+    // Listen for hash changes (Browser Back/Forward)
+    window.addEventListener('popstate', handleHashNavigation);
+
+    if (!window.location.hash.startsWith('#guide/')) {
+        renderGuideList();
+    }
     renderCraftingGrid(craftingRecipes);
 
     // Filter Listeners
@@ -562,7 +570,17 @@ function renderGuideList() {
     guideContainer.innerHTML = html;
 }
 
-function renderGuideDetail(id) {
+function handleHashNavigation() {
+    const hash = window.location.hash;
+    if (hash.startsWith('#guide/')) {
+        const guideId = hash.replace('#guide/', '');
+        renderGuideDetail(guideId, false); // false = don't push state again
+    } else {
+        renderGuideList();
+    }
+}
+
+function renderGuideDetail(id, updateHash = true) {
     const guide = guideData.find(g => g.id === id);
     if (!guide) return;
 
@@ -595,6 +613,10 @@ function renderGuideDetail(id) {
 
     guideContainer.innerHTML = detailHtml;
     document.getElementById('guides').scrollIntoView({ behavior: 'smooth' });
+
+    if (updateHash) {
+        history.pushState(null, '', `#guide/${id}`);
+    }
 }
 
 /**

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://relkou.github.io/Hytale-guia/sitemap.xml

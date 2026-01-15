@@ -483,6 +483,149 @@ const guideData = [
             </ul>
         `
     }
+    ,
+    {
+        id: 'commands',
+        phase: 'Utilidad',
+        title: 'Comandos de Hytale',
+        desc: 'Lista completa de trucos y administración.',
+        img: 'https://cdn.hytale.com/5e7ba4c23c9a2a00106793ca_127___in_game_cinema.jpg',
+        content: `
+            <div class="mb-4 text-center">
+                <h2 class="fw-bold mb-3">Comandos de Consola y Trucos</h2>
+                <p class="text-secondary">Lista de comandos útiles para administradores y jugadores. Usa <kbd class="bg-dark border border-secondary text-primary">/</kbd> para abrir la consola.</p>
+            </div>
+
+            <div class="accordion" id="accordionCommands">
+                
+                <!-- Admin Commands -->
+                <div class="accordion-item bg-dark border-secondary">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-dark text-warning fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cmdAdmin">
+                            <i class="fas fa-user-shield me-2"></i>Comandos de Administrador
+                        </button>
+                    </h2>
+                    <div id="cmdAdmin" class="accordion-collapse collapse show" data-bs-parent="#accordionCommands">
+                        <div class="accordion-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-primary" style="width: 40%">Comando</th>
+                                            <th class="text-light">Función</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-monospace small">
+                                        <tr><td>/op <span class="text-muted">[Jugador]</span></td><td>Otorga permisos de operador/admin.</td></tr>
+                                        <tr><td>/gamemode <span class="text-info">[mode]</span></td><td>Cambia modo de juego (adventure, creative, survival).</td></tr>
+                                        <tr><td>/give <span class="text-info">[item]</span> <span class="text-muted">[amount]</span></td><td>Entrega objetos a un jugador.</td></tr>
+                                        <tr><td>/heal</td><td>Restaura salud y energía al máximo.</td></tr>
+                                        <tr><td>/kill <span class="text-muted">[Jugador]</span></td><td>Elimina al jugador o entidad objetivo.</td></tr>
+                                        <tr><td>/tp <span class="text-muted">[x] [y] [z]</span></td><td>Teletransporta a coordenadas específicas.</td></tr>
+                                        <tr><td>/weather <span class="text-info">[type]</span></td><td>Cambia el clima (clear, rain, storm).</td></tr>
+                                        <tr><td>/time set <span class="text-info">[value]</span></td><td>Ajusta la hora del mundo.</td></tr>
+                                        <tr><td>/stop</td><td>Detiene el servidor de forma segura.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- World & Build Commands -->
+                <div class="accordion-item bg-dark border-secondary">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-dark text-info fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cmdWorld">
+                            <i class="fas fa-cubes me-2"></i>Mundo y Construcción
+                        </button>
+                    </h2>
+                    <div id="cmdWorld" class="accordion-collapse collapse" data-bs-parent="#accordionCommands">
+                        <div class="accordion-body p-0">
+                             <div class="table-responsive">
+                                <table class="table table-dark table-hover table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-primary" style="width: 40%">Comando</th>
+                                            <th class="text-light">Función</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-monospace small">
+                                        <tr><td>/block</td><td>Modifica estado de bloques.</td></tr>
+                                        <tr><td>/camshake</td><td>Modifica vibración de cámara.</td></tr>
+                                        <tr><td>/checkpoint add/remove</td><td>Gestiona puntos de control.</td></tr>
+                                        <tr><td>/clearblocks</td><td>Elimina bloques en área definida.</td></tr>
+                                        <tr><td>/fillblocks <span class="text-info">[block]</span></td><td>Rellena área con un bloque.</td></tr>
+                                        <tr><td>/prefab save/load</td><td>Guarda o carga estructuras prefabricadas.</td></tr>
+                                        <tr><td>/world discover</td><td>Descubre zonas del mapa.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multiplayer Commands -->
+                <div class="accordion-item bg-dark border-secondary">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-dark text-success fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cmdMulti">
+                            <i class="fas fa-users me-2"></i>Multijugador
+                        </button>
+                    </h2>
+                    <div id="cmdMulti" class="accordion-collapse collapse" data-bs-parent="#accordionCommands">
+                        <div class="accordion-body p-0">
+                             <div class="table-responsive">
+                                <table class="table table-dark table-hover table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-primary" style="width: 40%">Comando</th>
+                                            <th class="text-light">Función</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-monospace small">
+                                        <tr><td>/ban <span class="text-muted">[Jugador]</span></td><td>Banea a un usuario del servidor.</td></tr>
+                                        <tr><td>/kick <span class="text-muted">[Jugador]</span></td><td>Expulsa temporalmente a un jugador.</td></tr>
+                                        <tr><td>/whitelist add <span class="text-muted">[Jugador]</span></td><td>Añade jugador a la lista blanca.</td></tr>
+                                        <tr><td>/who</td><td>Lista de jugadores conectados.</td></tr>
+                                        <tr><td>/emote <span class="text-info">[name]</span></td><td>Realiza un gesto/animación.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Misc Commands -->
+                <div class="accordion-item bg-dark border-secondary">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-dark text-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cmdMisc">
+                            <i class="fas fa-terminal me-2"></i>Otros Comandos
+                        </button>
+                    </h2>
+                    <div id="cmdMisc" class="accordion-collapse collapse" data-bs-parent="#accordionCommands">
+                        <div class="accordion-body p-0">
+                             <div class="table-responsive">
+                                <table class="table table-dark table-hover table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-primary" style="width: 40%">Comando</th>
+                                            <th class="text-light">Función</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-monospace small">
+                                        <tr><td>/damage <span class="text-muted">[Jugador]</span></td><td>Inflige daño directo.</td></tr>
+                                        <tr><td>/notify</td><td>Envía notificación global.</td></tr>
+                                        <tr><td>/cursethis</td><td>Maldice el objeto en mano.</td></tr>
+                                        <tr><td>/memories clear</td><td>Reinicia progresos de historia.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        `
+    }
 ];
 
 // Crafting Data

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://relkou.github.io/Hytale-guia/sitemap.xml
+Sitemap: https://hytalewiki.fun/sitemap.xml
